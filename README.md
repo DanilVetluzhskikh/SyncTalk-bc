@@ -45,6 +45,7 @@ SyncTalk-bc/
 ├── tsconfig.json               # TypeScript configuration
 ├── README.md                   # Project documentation
 └── .gitignore                  # Ignored files and folders in git
+```
 
 ## Installation and Run
 
