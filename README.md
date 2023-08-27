@@ -21,9 +21,9 @@ SyncTalk is a pet project built with the idea of Discord in mind.
 SyncTalk-bc/
 ├── src/
 │   ├── modules/                # Core functional modules
+│   │   ├── app/                # App Module as entry point
 │   │   ├── auth/               # Authentication logic
 │   │   ├── user/               # User management
-│   │   ├── profile/            # User profiles
 │   │   ├── server/             # Server (aka guild) management
 │   │   ├── channel/            # Channel management
 │   │   ├── message/            # Message management
@@ -40,6 +40,9 @@ SyncTalk-bc/
 ├── seeders/                    # Sequelize seeders for initial data
 ├── public/                     # Public static assets
 ├── uploads/                    # Uploaded assets
+├── nest-cli.json               # Nest CLI json 
+├── .eslint.js                  # Eslint settings
+├── .prettierrc                 # Pretter settings
 ├── .env                        # Environment variables
 ├── package.json                # Project dependencies and scripts
 ├── tsconfig.json               # TypeScript configuration
@@ -51,6 +54,7 @@ SyncTalk-bc/
 
 #### 1. Users
   - `id` (Primary Key)
+  - `profileId` (Foreign Key)
   - `username`
   - `email`
   - `passwordHash`
@@ -60,7 +64,6 @@ SyncTalk-bc/
 
 #### 2. Profiles
   - `id` (Primary Key)
-  - `userId` (Foreign Key)
   - `avatarURL`
   - `status`
   - `createdAt`
@@ -76,6 +79,7 @@ SyncTalk-bc/
   - `deletedAt`
 
 #### 4. ServerMembers
+  - `id` (Primary Key)
   - `userId` (Foreign Key)
   - `serverId` (Foreign Key)
   - `joinedAt`
@@ -84,7 +88,7 @@ SyncTalk-bc/
   - `updatedAt`
   - `deletedAt`
 
-#### 5. Channels
+#### 5. Channel
   - `id` (Primary Key)
   - `name`
   - `serverId` (Foreign Key)
@@ -111,6 +115,7 @@ SyncTalk-bc/
   - `deletedAt`
 
 #### 8. Friendships
+  - `id` (Primary Key)
   - `userId` (Foreign Key)
   - `friendId` (Foreign Key)
   - `status`
