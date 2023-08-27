@@ -17,6 +17,35 @@ SyncTalk is a pet project built with the idea of Discord in mind.
 - WebRTC (Audio/Video)
 - Jest (Testing)
 
+```plaintext
+SyncTalk-bc/
+├── src/
+│   ├── modules/                # Core functional modules
+│   │   ├── auth/               # Authentication logic
+│   │   ├── user/               # User management
+│   │   ├── profile/            # User profiles
+│   │   ├── server/             # Server (aka guild) management
+│   │   ├── channel/            # Channel management
+│   │   ├── message/            # Message management
+│   │   └── call/               # Call management
+│   ├── config/                 # Application-wide configuration
+│   ├── middleware/             # Middlewares
+│   ├── interceptors/           # NestJS interceptors
+│   ├── decorators/             # Custom decorators
+│   ├── exceptions/             # Custom exception filters
+│   ├── utils/                  # Utility classes and functions
+│   └── main.ts                 # Application entry point
+├── test/                       # Test setups and specs
+├── migrations/                 # Sequelize migrations
+├── seeders/                    # Sequelize seeders for initial data
+├── public/                     # Public static assets
+├── uploads/                    # Uploaded assets
+├── .env                        # Environment variables
+├── package.json                # Project dependencies and scripts
+├── tsconfig.json               # TypeScript configuration
+├── README.md                   # Project documentation
+└── .gitignore                  # Ignored files and folders in git
+
 ## Installation and Run
 
 1. Clone the repository:
@@ -114,33 +143,3 @@ npm run dev
   - `deletedAt`
 
 > Note: The `deletedAt` field is used for soft deletion. If this field is populated, the corresponding record is considered to be 'archived' or 'soft deleted'.
-
-
-```plaintext
-SyncTalk-bc/
-├── src/
-│   ├── modules/                # Core functional modules
-│   │   ├── auth/               # Authentication logic
-│   │   ├── user/               # User management
-│   │   ├── profile/            # User profiles
-│   │   ├── server/             # Server (aka guild) management
-│   │   ├── channel/            # Channel management
-│   │   ├── message/            # Message management
-│   │   └── call/               # Call management
-│   ├── config/                 # Application-wide configuration
-│   ├── middleware/             # Middlewares
-│   ├── interceptors/           # NestJS interceptors
-│   ├── decorators/             # Custom decorators
-│   ├── exceptions/             # Custom exception filters
-│   ├── utils/                  # Utility classes and functions
-│   └── main.ts                 # Application entry point
-├── test/                       # Test setups and specs
-├── migrations/                 # Sequelize migrations
-├── seeders/                    # Sequelize seeders for initial data
-├── public/                     # Public static assets
-├── uploads/                    # Uploaded assets
-├── .env                        # Environment variables
-├── package.json                # Project dependencies and scripts
-├── tsconfig.json               # TypeScript configuration
-├── README.md                   # Project documentation
-└── .gitignore                  # Ignored files and folders in git
