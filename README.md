@@ -47,20 +47,6 @@ SyncTalk-bc/
 └── .gitignore                  # Ignored files and folders in git
 ```
 
-## Installation and Run
-
-1. Clone the repository:
-git clone https://github.com/DanilVetluzhskikh/SyncTalk-bc.git
-2. Install dependencies:
-npm install
-3. Create a `.env` file and add database settings:
-DB_HOST=localhost
-DB_PORT=5432
-DB_USERNAME=yourusername
-DB_PASSWORD=yourpassword
-4. Run the project:
-npm run dev
-
 ### Tables and Fields
 
 #### 1. Users
@@ -144,3 +130,17 @@ npm run dev
   - `deletedAt`
 
 > Note: The `deletedAt` field is used for soft deletion. If this field is populated, the corresponding record is considered to be 'archived' or 'soft deleted'.
+
+## Installation and Run
+
+1. Clone the repository:
+git clone https://github.com/DanilVetluzhskikh/SyncTalk-bc.git
+2. Install dependencies:
+npm install
+3. Create a `.env` file and add database settings:
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=yourusername
+DB_PASSWORD=yourpassword
+4. Run the project:
+npm run dev
