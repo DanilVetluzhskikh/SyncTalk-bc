@@ -7,6 +7,7 @@ import { ServerModule } from '../server/server.module';
 import { ChannelModule } from '../channel/channel.module';
 import { MessageModule } from '../message/message.module';
 import { CallModule } from '../call/call.module';
+import { AuthModule } from '../auth/auth.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { CallModule } from '../call/call.module';
       synchronize: true,
     }),
     UserModule,
+    AuthModule,
     ServerModule,
     ChannelModule,
     MessageModule,

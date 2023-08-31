@@ -18,6 +18,7 @@ export interface UserCreationAttributes {
   username: string;
   email: string;
   passwordHash: string;
+  profileId: number;
 }
 
 @Table({ tableName: 'users' })

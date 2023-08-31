@@ -11,8 +11,8 @@ SyncTalk is a pet project built with the idea of Discord in mind.
 - TypeScript
 - Sequelize (ORM)
 - PostgreSQL
-- Passport.js (Authentication)
 - JWT (Authentication)
+- class-validator (validation)
 - Socket.io (Real-time)
 - WebRTC (Audio/Video)
 - Jest (Testing)
