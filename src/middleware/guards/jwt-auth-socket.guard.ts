@@ -7,17 +7,29 @@ import {
 import { Observable } from 'rxjs';
 import { JwtService } from '@nestjs/jwt';
 
+const parseCookie = (str: string) =>
+  str
+    .split(';')
+    .map((v) => v.split('='))
+    .reduce((acc, v) => {
+      acc[decodeURIComponent(v[0].trim())] = decodeURIComponent(v[1].trim());
+      return acc;
+    }, {});
+
 @Injectable()
-export class JwtAuth implements CanActivate {
+export class JwtAuthSocket implements CanActivate {
   constructor(private jwtService: JwtService) {}
 
   canActivate(
     context: ExecutionContext,
   ): boolean | Promise<boolean> | Observable<boolean> {
-    const req = context.switchToHttp().getRequest();
+    const req = context.switchToHttp().getRequest().handshake.headers;
 
     try {
-      const token = req.cookies['auth_token'].token;
+      const auth_token = parseCookie(req.cookie)['auth_token'];
+      const str = auth_token.substring(2);
+      const parsed = JSON.parse(str);
+      const token = parsed.token;
 
       if (!token) {
         throw new UnauthorizedException({

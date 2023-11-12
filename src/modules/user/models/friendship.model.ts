@@ -48,7 +48,7 @@ export class Friendship extends Model<
     type: DataType.STRING,
     allowNull: false,
   })
-  status: string; // Could be 'pending', 'accepted', or 'declined'
+  status: string; // Could be 'pending', 'accepted'
 
   @CreatedAt
   @Column

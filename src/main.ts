@@ -1,17 +1,23 @@
 import { NestFactory } from '@nestjs/core';
 import { Sequelize } from 'sequelize-typescript';
-import { AppModule } from './modules/app/app.module'; // Поправьте путь к AppModule
+import { AppModule } from './modules/app/app.module';
 import { ValidationPipe } from './config/pipes/validation.pipe';
-import { HttpExceptionFilter } from './config/pipes/error.pipe'; // Поправьте название пайпа
+import { HttpExceptionFilter } from './config/pipes/error.pipe';
+import * as cookieParser from 'cookie-parser';
 
 const runServer = async () => {
   const app = await NestFactory.create(AppModule);
   const sequelize = app.get(Sequelize);
-  const port = process.env.PORT || 3000; // Используйте || вместо ??
+  const port = process.env.PORT || 3000;
 
   app.useGlobalPipes(new ValidationPipe());
+  app.use(cookieParser());
   app.useGlobalFilters(new HttpExceptionFilter());
-  app.enableCors();
+  app.enableCors({
+    origin: 'http://localhost:1337',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  });
 
   try {
     await sequelize.authenticate();

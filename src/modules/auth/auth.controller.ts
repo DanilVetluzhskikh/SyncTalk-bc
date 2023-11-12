@@ -1,21 +1,34 @@
-import { Controller, Post, Body, UseGuards } from '@nestjs/common';
+import { Controller, Post, Body, Res, Req } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register-dto';
-import { JwtAuth } from 'src/middleware/guards/jwt-auth.guard';
 import { LoginDto } from './dto/login-dto';
+import { Response, Request } from 'express';
 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @UseGuards(JwtAuth)
   @Post('login')
-  async login(@Body() login: LoginDto) {
-    return this.authService.login(login);
+  async login(@Body() login: LoginDto, @Res() response: Response) {
+    return await this.authService.login(login, response);
   }
 
   @Post('register')
-  async register(@Body() register: RegisterDto) {
-    return this.authService.register(register);
+  async register(@Body() register: RegisterDto, @Res() response: Response) {
+    return await this.authService.register(register, response);
+  }
+
+  @Post('logout')
+  async logout(@Res() response: Response) {
+    response.clearCookie('auth_token');
+    response.clearCookie('refresh_token');
+    return response
+      .status(200)
+      .json({ message: 'Вы успешно вышли из системы' });
+  }
+
+  @Post('refresh')
+  async refresh(@Req() request: Request, @Res() response: Response) {
+    return await this.authService.refresh(request, response);
   }
 }
